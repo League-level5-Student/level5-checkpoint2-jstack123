@@ -16,7 +16,7 @@ public class Checkpoint {
 		 * Using streams, perform the following:
 		 * 
 		 * 1. Print the entire list.
-		 * 
+		 
 		 * 
 		 * 2. Print the miles per gallon of each entry.
 		 * 
@@ -29,6 +29,44 @@ public class Checkpoint {
 		 * 
 		 * 5. Print only the cars with "toyota" in the name.
 		 */
+		ArrayList<CarMPGEntry> carList = readCarMPGEntryDataFromFile();
+		Stream<CarMPGEntry> sArray = carList.stream();
+		
+				sArray.forEach((s) -> {
+			System.out.println(s);
+		});
+		
+		sArray.forEach((s) -> {
+			System.out.println(s.mpg);
+			}); 
+	
+ 		sArray = sArray.sorted();
+			sArray.forEach((s) -> {
+				System.out.println(s.carName);
+			});
+		
+ 		sArray = sArray.filter((s) -> {
+				if(s.cylinders != 8) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+			sArray.forEach((s) -> {
+				System.out.println(s);
+			});
+			
+		
+			sArray = sArray.filter((s) -> {
+			if(s.carName.contains("toyota")) {
+				return true;
+			} else {
+				return false;
+			}
+			});
+			sArray.forEach((s) -> {
+				System.out.println(s.carName);
+			});
 		
 		
 	}
